@@ -21,36 +21,12 @@ const router: Router = Router();
  *         required: true
  *         schema:
  *           type: string
- *         description: The ID of the post to retrieve.
+ *         description: The ID of the post to retrieve
  *     responses:
  *       200:
- *         description: Successfully retrieved post.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                 data:
- *                   type: object
- *                   properties:
- *                     id:
- *                       type: string
- *                     content:
- *                       type: string
- *                     author:
- *                       type: string
- *                     isFlagged:
- *                       type: boolean
- *                     createdAt:
- *                       type: string
- *                       format: date-time
- *                     updatedAt:
- *                       type: string
- *                       format: date-time
+ *         description: Successfully retrieved post
  *       404:
- *         description: Post not found.
+ *         description: Post not found
  */
 router.get("/post/:id", getPostById);
 
@@ -59,7 +35,7 @@ router.get("/post/:id", getPostById);
  * /moderation/post/{id}/moderate:
  *   post:
  *     summary: Moderate a post
- *     description: Flags a post for moderation and applies moderation actions.
+ *     description: Allows a moderator to take action on a post.
  *     parameters:
  *       - in: path
  *         name: id
@@ -69,9 +45,9 @@ router.get("/post/:id", getPostById);
  *         description: The ID of the post to moderate.
  *     responses:
  *       200:
- *         description: Post moderated successfully.
+ *         description: Post moderated successfully
  *       400:
- *         description: Invalid request.
+ *         description: Bad request, invalid parameters
  */
 router.post("/post/:id/moderate", moderatePost);
 
@@ -79,20 +55,18 @@ router.post("/post/:id/moderate", moderatePost);
  * @swagger
  * /moderation/user/{id}/profile:
  *   get:
- *     summary: Get a user's profile
- *     description: Retrieves the profile of a specific user.
+ *     summary: Retrieve user profile
+ *     description: Get details about a user by their ID.
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
  *         schema:
  *           type: string
- *         description: The ID of the user whose profile is being retrieved.
+ *         description: The ID of the user profile to retrieve
  *     responses:
  *       200:
- *         description: Successfully retrieved user profile.
- *       404:
- *         description: User not found.
+ *         description: Successfully retrieved user profile
  */
 router.get("/user/:id/profile", getUserProfile);
 
@@ -101,14 +75,14 @@ router.get("/user/:id/profile", getUserProfile);
  * /moderation/user/{id}/flag:
  *   post:
  *     summary: Flag a user
- *     description: Flags a user for violating community guidelines.
+ *     description: Allows a user to be flagged for violating community guidelines.
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
  *         schema:
  *           type: string
- *         description: The ID of the user being flagged.
+ *         description: The ID of the user to flag.
  *     requestBody:
  *       required: true
  *       content:
@@ -121,9 +95,7 @@ router.get("/user/:id/profile", getUserProfile);
  *                 description: The reason for flagging the user.
  *     responses:
  *       200:
- *         description: User flagged successfully.
- *       400:
- *         description: Invalid request.
+ *         description: User flagged successfully
  */
 router.post("/user/:id/flag", flagUser);
 
@@ -131,11 +103,11 @@ router.post("/user/:id/flag", flagUser);
  * @swagger
  * /moderation/content/flags/stats:
  *   get:
- *     summary: Get flagged content statistics
- *     description: Retrieves statistics on flagged content, including the number of flagged posts and users.
+ *     summary: Retrieve flagged content statistics
+ *     description: Get statistics on flagged posts and users.
  *     responses:
  *       200:
- *         description: Flagged content statistics retrieved successfully.
+ *         description: Successfully retrieved flagged content statistics
  */
 router.get("/content/flags/stats", getFlaggedContentStats);
 

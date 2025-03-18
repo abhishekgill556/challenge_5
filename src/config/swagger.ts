@@ -17,7 +17,7 @@ const swaggerOptions = {
             },
         ],
     },
-    apis: ["./src/api/v1/routes/*.ts"], // Auto-scans JSDoc comments
+    apis: ["./src/api/v1/routes/*.ts"], // Scans for JSDoc comments
 };
 
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
